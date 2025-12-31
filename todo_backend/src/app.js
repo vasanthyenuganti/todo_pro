@@ -20,3 +20,27 @@ app.listen(4000, () => {
     // connect to mongo
     connectToDB()
 })
+
+
+// CRUD - Create
+// save()
+// create()
+// insertOne({})
+// insertMany([])
+
+// CRUD - Read
+// find()
+// findOne()
+// findOneById()
+
+// CRUD - Update
+// findOneByIdAndModify()
+// updateOne({})
+// updateMany([])
+
+// CRUD - Delete
+// findOneByIdAndDelete()
+// deleteOne()
+// deleteMany()
+
+

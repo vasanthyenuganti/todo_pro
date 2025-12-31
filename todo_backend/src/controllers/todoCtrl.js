@@ -20,4 +20,52 @@ const addTodo = async (req, res) => {
     }
 }
 
-module.exports = {addTodo}
+const getOneBytitle = async (req, res) => {
+    try {
+        // const { title } = req.body;
+        const todo = await Todo.findById(
+            { _id: "695363bb7e795a460904da27" },
+            { createdAt: 1, updatedAt: 1, __v: 1, _id: 0 }
+        );
+        res.status(200).json(todo);
+
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
+
+const updateById = async (req, res) => {
+    try {
+        const { id, title, dis, isPrimary } = req.body;
+        const todo = await Todo.findByIdAndUpdate(
+            { "_id": id },
+            {
+                title: title,
+                dis: dis,
+                isPrimary: isPrimary
+            },
+        )
+        res.status(200).json(todo);
+
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
+
+
+const deleteById = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const todo = await Todo.findByIdAndDelete(
+            {
+                _id: id
+            }
+        )
+
+        res.status(200).json(todo);
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
+
+module.exports = { addTodo, getOneBytitle, updateById, deleteById }
